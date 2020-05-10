@@ -16,12 +16,6 @@ class _MainPageState extends State<MainPage> {
     Container(
       color: Colors.primaries[2],
     ),
-    Container(
-      color: Colors.primaries[2],
-    ),
-    Container(
-      color: Colors.primaries[3],
-    ),
     ProfilePage(),
   ];
 
@@ -47,10 +41,12 @@ class _MainPageState extends State<MainPage> {
             _bulidBottomNavigationBarItem(
                 activeIconPath: "assets/home_selected.png",
                 iconPath: "assets/home.png"),
+            /*
             _bulidBottomNavigationBarItem(
                 activeIconPath: "assets/search_selected.png",
                 iconPath: "assets/search.png"),
             _bulidBottomNavigationBarItem(iconPath: "assets/add.png"),
+             */
             _bulidBottomNavigationBarItem(
                 activeIconPath: "assets/heart_selected.png",
                 iconPath: "assets/heart.png"),
