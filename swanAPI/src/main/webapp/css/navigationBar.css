@@ -1,0 +1,69 @@
+@CHARSET "utf-8";
+
+.header {
+	width: 100%;
+	height: 100px;
+	background-color: rgb(37, 211, 210);
+
+}
+.header_top {
+	overflow:hidden;
+}
+h1 {
+	margin:15px;
+	float:left;
+}
+h1 a{
+	font-size: 25px;
+	
+	color: white;
+}
+.user {
+	margin: 10px 5px;
+	padding:5px;
+}
+.user_name {
+	float:right;
+	margin:5px;
+}
+#addSection{
+	float:right;
+	background:none;
+	cursor  : pointer;
+	border:none;
+	font-size:20px;
+	color:white;
+}
+#userButton{
+	float:right;
+	background:none;
+	cursor  : pointer;
+	border:none;
+	font-size:30px;
+	color:white;
+}
+
+.header .form {
+	float:left;
+	text-align:center;
+
+	height: 20px;
+	margin: auto;
+	width:100%;
+	
+}
+#search{
+	width:80%;
+	padding:5px;
+}
+.search_area button{
+	width:10%;
+	background: none;
+	color: white;
+	border: none;
+	font-size:20px;
+}
+a {
+	text-decoration:none;
+	color: black;
+}

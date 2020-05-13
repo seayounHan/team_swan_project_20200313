@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naver.dining.dao.StoreLogReposiroty">
+
+    <insert id="insertStoreLog" parameterType="com.naver.dining.model.StoreLog">
+		INSERT INTO store_log(store_id, log_type, memo, memo_before, reg_date, nickname)
+		VALUES (#{storeId}, #{logType}, #{memo}, #{memoBefore}, now(), #{nickname})
+    </insert>
+    
+    <select id="selectStoreLog" resultType="com.naver.dining.model.StoreLog">
+    	SELECT memo, memo_before, reg_date, nickname
+    	FROM store_log
+    	WHERE store_id = #{storeId} AND log_type = #{logType}
+    </select>
+    
+
+</mapper> 

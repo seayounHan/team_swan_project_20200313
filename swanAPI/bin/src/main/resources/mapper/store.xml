@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naver.dining.dao.StoreRepository">
+
+    <insert id="insertStore" parameterType="com.naver.dining.model.Store">
+        INSERT INTO    store (
+            store_name,
+            category,
+            section_id,
+            address1,
+            address2,
+            zipcode,
+            coordinates,
+            tel_main,
+            tel_sub,
+            img1,
+            img2,
+            store_url,
+            tag_keyword,
+            tag_menu,
+            tag_service,
+            open,
+            nickname,
+            reg_date,
+            chg_date
+        ) VALUES (
+            #{storeName},
+            #{category},
+            #{sectionId},
+            #{address1},
+            #{address2},
+            #{zipcode},
+            #{coordinates},
+            #{telMain},
+            #{telSub},
+            #{img1},
+            #{img2},
+            #{storeUrl},
+            #{tagKeyword},
+            #{tagMenu},
+            #{tagService},
+            #{open},
+            #{nickname},
+            now(),
+            now()
+        )
+    </insert>
+    
+    <select id="checkStore" parameterType="com.naver.dining.model.Store" resultType="int">
+    	SELECT count(id)
+    	FROM store
+    	WHERE section_id=#{sectionId}
+    		AND store_name = #{storeName}
+    </select>
+    
+    <update id="updateStore" parameterType="com.naver.dining.model.Store" >
+        UPDATE 
+            store
+        SET
+            category = #{category},
+            address1 = #{address1},
+            address2 = #{address2},
+            zipcode = #{zipcode},
+            coordinates = #{coordinates},
+            tel_main = #{telMain},
+            tel_sub = #{telSub},
+            img1 = #{img1},
+            img2 = #{img2},
+            store_url = #{storeUrl},
+            tag_keyword = #{tagKeyword},
+            tag_menu = #{tagMenu},
+            tag_service = #{tagService},
+            open = #{open},
+            nickname = #{nickname},
+            chg_date = now()
+        WHERE
+            store_name=#{storeName}
+            	AND section_id=#{sectionId}
+    </update>
+    
+    <select id="selectAllStores" resultType="com.naver.dining.model.Store">
+        SELECT 
+            id AS id,
+            store_name AS storeName,
+            category AS category,
+            section_id AS sectionId,
+            address1 AS address1,
+            address2 AS address2,
+            zipcode AS zipcode,
+            coordinates AS coordinates,
+            tel_main AS telMain,
+            tel_sub AS telSub,
+            img1 AS img1,
+            img2 AS img2,
+            store_url AS storeUrl,
+            tag_keyword AS tagKeyword,
+            tag_menu AS tagMenu,
+            tag_service AS tagService,
+            open AS open,
+            nickname AS nickname,
+            reg_date AS regDate,
+            chg_date AS chgDate
+        FROM
+            store
+    </select>
+
+</mapper>

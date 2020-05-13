@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.swan.dao.UserRepository">
+	<!-- <select id="checkId" parameterType="com.naver.dining.model.Member" resultType="int">
+		SELECT count(id)
+		FROM member
+		WHERE nickname = #{nickname} 
+    		AND section_id = #{sectionId}
+	</select> -->
+	<select id="getUserInfo" parameterType="string" resultType="com.swan.model.User">
+    	SELECT *
+    	FROM R_USER_MAS
+    	WHERE USER_ID = #{userId} 
+    </select>
+	
+    <insert id="insertUser" parameterType="com.swan.model.User">
+		INSERT INTO R_USER_MAS(USER_ID, USER_PASSWORD, USER_NAME, EMP_NUMBER, EMAIL, PHONE) 
+		VALUES(#{userId},#{userPassword}, #{userName},#{empNumber}, #{email}, #{phone})
+    </insert>
+    
+    <select id="login" parameterType="com.swan.model.User" resultType="int">
+    	SELECT count(*)
+    	FROM R_USER_MAS
+    	WHERE USER_ID = #{userId} 
+    	  AND USER_PASSWORD = #{password}
+    </select>
+    
+    <delete id="deleteMember">
+    	DELETE FROM R_USER_MAS
+    	WHERE USER_ID = #{userId} 
+    	  AND USER_PASSWORD = #{password}
+    </delete>
+</mapper> 

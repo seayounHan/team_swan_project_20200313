@@ -1,0 +1,106 @@
+@CHARSET "utf-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	
+}
+
+
+.container {
+	position: relative;
+}
+.tag_count {
+	overflow:hidden;
+	margin: 10px auto;
+	width:90%;
+	text-align: center;
+	border: 2px solid rgb(37, 211, 210);
+	padding:1px;
+}
+
+.tag {
+	width:24%;
+	height:50px;
+	background-color:#ccc;
+	float:left;
+	margin:0.5%;
+	font-size:15px;
+}
+
+.list_item {
+	border: 2px solid rgb(37, 211, 210);
+	width: 90%;
+	margin: 5px auto;
+	
+}
+img {
+	height:200px;
+	width: 100%;
+	
+}
+
+.list_item_top {
+	background-color:gray;
+}
+.list_item_title_area {
+	padding:5px;
+	background-color:#ccc;
+}
+.store_name{
+	font-size:25px;
+	
+}
+.list_item_content {
+	padding:5px;
+	font-size:13px;
+}
+.list_item_bottom {
+	padding:5px;
+	border-top:2px solid #ccc;
+	height: 30px;
+	content:'';
+	display:block;
+	clear:both;
+}
+.favorite_div {
+	float:left;
+	font-size:13px;
+}
+.favorite i {
+	color:red;
+}
+.mark_point_area {
+	float: left;
+	margin : 3px;
+}
+.review_count_area {
+	float: left;
+	margin: 3px;
+}
+
+.closure {
+	float:right;
+	font-size:13px;
+	margin:3px;
+}
+
+#add_store_button button{
+	width:35px;
+	height:35px;
+	position: fixed;
+	bottom:10px;
+	right:10px;
+	background-color: rgb(37, 211, 210);
+	border-radius:50px;
+	border:none;
+	font-size:25px;
+	text-align: center;
+	color: white;	
+}
+.keyword_tag{
+	width:100%;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
