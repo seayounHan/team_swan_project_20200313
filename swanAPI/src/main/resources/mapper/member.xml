@@ -4,24 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.swan.dao.UserRepository">
+<!-- <mapper namespace="com.swan.persistence.MemberRepository"> -->
 	<!-- <select id="checkId" parameterType="com.naver.dining.model.Member" resultType="int">
 		SELECT count(id)
 		FROM member
 		WHERE nickname = #{nickname} 
     		AND section_id = #{sectionId}
 	</select> -->
-	<select id="getUserInfo" parameterType="string" resultType="com.swan.model.User">
+	<select id="getUserInfo" parameterType="string" resultType="com.swan.model.Member">
     	SELECT *
     	FROM R_USER_MAS
     	WHERE USER_ID = #{userId} 
     </select>
 	
-    <insert id="insertUser" parameterType="com.swan.model.User">
-		INSERT INTO R_USER_MAS(USER_ID, USER_PASSWORD, USER_NAME, EMP_NUMBER, EMAIL, PHONE) 
-		VALUES(#{userId},#{userPassword}, #{userName},#{empNumber}, #{email}, #{phone})
+    <insert id="insertUser" parameterType="com.swan.model.Member">
+		INSERT INTO R_USER_MAS(USER_ID, USER_PASSWORD, USER_NAME, EMP_NUMBER, EMAIL, PHONE, ROLE, ENABLED) 
+		<!-- VALUES(#{userId},#{userPassword}, #{userName},#{empNumber}, #{email}, #{phone}) -->
+		VALUES(#{USER_ID},#{USER_PASSWORD}, #{USER_NAME},#{EMP_NUMBER}, #{EMAIL}, #{PHONE}, #{ROLE}, #{ENABLED})
     </insert>
     
-    <select id="login" parameterType="com.swan.model.User" resultType="int">
+    <select id="login" parameterType="com.swan.model.Member" resultType="int">
     	SELECT count(*)
     	FROM R_USER_MAS
     	WHERE USER_ID = #{userId} 
