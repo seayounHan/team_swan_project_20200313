@@ -7,8 +7,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import javax.sql.DataSource;
-
+//import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 //import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -16,15 +15,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	private AuthenticationEntryPoint authenticationEntryPoint;
 	
-	
+// JPA 사용으로 인한 주석 처리
 //	@Autowired
 //	private DataSource dataSource;
+	
 	@Autowired
 	private SwanUserDetailService swanUserDetailService;
 	
@@ -52,16 +52,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	protected CustomUserAuthenticationFilter getAuthenticationFilter() {
 		CustomUserAuthenticationFilter authFilter = new CustomUserAuthenticationFilter();
-		
+		CustomSimpleUrlAuthenticationSuccessHandler csuas = new CustomSimpleUrlAuthenticationSuccessHandler();
+
 		try {
 		authFilter.setFilterProcessesUrl("/login");
 		authFilter.setAuthenticationManager(this.authenticationManagerBean());
 		authFilter.setUsernameParameter("USER_ID");
 		authFilter.setPasswordParameter("USER_PASSWORD");
-		authFilter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler("/userMain")); // 로그인 성공시 이동하는 url. 이때 어떤 정보를 json에 담아 뿌려줄건지 협의 필요.
-		authFilter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login")); // 로그인 실패시 다시 login 화면으로. 로그인 실패했다는 팝업을 위한 메세지를 json에 담아 전송하는것 구현 예정 
+//		authFilter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler("/userMain")); // 로그인 성공시 이동하는 url. 이때 어떤 정보를 json에 담아 뿌려줄건지 협의 필요.
+		authFilter.setAuthenticationSuccessHandler(new CustomSimpleUrlAuthenticationSuccessHandler());
+//		authFilter.setAuthenticationFailureHandler(new SimpleUrlAuthenticationFailureHandler("/login")); // 로그인 실패시 다시 login 화면으로. 로그인 실패했다는 팝업을 위한 메세지를 json에 담아 전송하는것 구현 예정 
+		authFilter.setAuthenticationFailureHandler(new CustomSimpleUrlAuthenticationFailureHandler()); // 401 Unauthorized
 		}catch(Exception e) {
-			System.out.println("???what???");
+			System.out.println("EXCEPTION DURING LOGIN : " + e);
 			e.printStackTrace();
 		}
 		return authFilter;

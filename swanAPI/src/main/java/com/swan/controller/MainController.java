@@ -72,7 +72,7 @@ public class MainController {
 //		String empNumber1 = "empNum2";
 //		String email1 = "userEmail2";
 //		String phone1 = "userPhone2";
-//		String Role1 = "ROLE_MEMBER";
+//		String Role1 = "ROLE_USER";
 //		Boolean enabled1 = true;
 //		
 //		Member user1 = new Member();

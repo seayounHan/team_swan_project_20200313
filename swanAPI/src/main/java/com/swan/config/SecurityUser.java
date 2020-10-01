@@ -13,7 +13,7 @@ public class SecurityUser extends User{
 	public SecurityUser(Member member) {
 		super(member.getUSER_ID(), member.getUSER_PASSWORD(), AuthorityUtils.createAuthorityList(member.getROLE().toString()));
 // {noop} 추가하면 암호화 없이 그대로 사용 가능
-//		super(member.getUSER_ID(), "{noop}"+member.getUSER_PASSWORD(), AuthorityUtils.createAuthorityList("ROLE_MEMBER".toString()));
+//		super(member.getUSER_ID(), "{noop}"+member.getUSER_PASSWORD(), AuthorityUtils.createAuthorityList("ROLE_USER".toString()));
 	}
 	
 }

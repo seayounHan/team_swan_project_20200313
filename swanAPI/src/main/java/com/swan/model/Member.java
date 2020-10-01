@@ -1,5 +1,8 @@
 package com.swan.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,11 +14,13 @@ import com.swan.model.Role;
 import org.hibernate.annotations.ColumnDefault;
 
 import lombok.ToString;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 //User 라는 이름의 spring boot 내장 클래스가 존재하기 때문에 혼선을 방지하기 위해 User -> Member 클래스 이름 변경
-
+@NoArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -35,6 +40,21 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private Role ROLE;
 	private boolean ENABLED;
+	
+	@Builder
+	public Member(String USER_ID, String USER_PASSWORD, String USER_NAME, String EMP_NUMBER, String EMAIL, String PHONE, String CRT_TM, String UDT_TM, Role ROLE, boolean ENABLED) {
+		
+		this.USER_ID = USER_ID;
+	    this.USER_PASSWORD = USER_PASSWORD;
+	    this.USER_NAME = USER_NAME;
+	    this.EMP_NUMBER = EMP_NUMBER;
+	    this.EMAIL = EMAIL;
+	    this.PHONE = PHONE;
+	    this.CRT_TM = CRT_TM;
+	    this.UDT_TM = UDT_TM;
+	    this.ROLE = Role.ROLE_USER;
+	    this.ENABLED = true;
+	  }
 
 ////////////////* lombok 적용하여 아래롤 삭제해도 무방 *///////////////	
 //	public String getUSER_ID() {
@@ -91,7 +111,7 @@ public class Member {
 //	public void setRole(Role rOLE) {
 //		ROLE = rOLE;
 //	}
-	
+//	
 	
 	
 }
