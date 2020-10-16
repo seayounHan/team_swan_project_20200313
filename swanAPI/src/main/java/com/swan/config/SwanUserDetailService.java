@@ -72,7 +72,7 @@ public class SwanUserDetailService implements UserDetailsService{
 		}catch(Exception e){
 			System.out.println("MEMBER SAVE ERROR : ");
 			System.out.println(e);
-			obj.addProperty("result", "NO");
+			obj.addProperty("result", "false");
 		}
 		
 		return gson.toJson(obj);
